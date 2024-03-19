@@ -1,0 +1,9 @@
+ls
+cd vote
+docker build -t arasu528/capstone1:vote${BUILD_NUMBER} .
+docker push arasu528/capstone1:vote${BUILD_NUMBER}
+kubectl get nodes -n cld
+kubectl get deployment -n cld 
+kubectl set image deployment/vote vote=arasu528/capstone1:vote${BUILD_NUMBER} -n cld
+kubectl rollout restart deployment/vote -n cld
+
